@@ -1,4 +1,4 @@
-# Simple Crudh with Swagger
+# Simple Crud with Swagger
 
 ---
 
