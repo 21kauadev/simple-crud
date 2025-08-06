@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kauadev.simple_crud.domain.product.Product;
 import com.kauadev.simple_crud.domain.product.ProductDTO;
+import com.kauadev.simple_crud.domain.product.exceptions.ProductMissingFieldsException;
 import com.kauadev.simple_crud.domain.product.exceptions.ProductNotFoundException;
 import com.kauadev.simple_crud.repositories.ProductRepository;
 
@@ -26,6 +27,9 @@ public class ProductService {
 
     public Product createProduct(ProductDTO data) {
         Product product = new Product();
+
+        if (data.name() == null || data.price() == null || data.quantity() == null)
+            throw new ProductMissingFieldsException();
 
         product.setName(data.name());
         product.setPrice(data.price());
